@@ -8,7 +8,7 @@ input, textarea {
 }
 
 input:focus, textarea:focus {
-  @apply border-blue-900;
+  @apply border-blue-900 !important;
 }
 
 h1 {
