@@ -14,3 +14,11 @@ input:focus, textarea:focus {
 h1 {
   @apply text-blue-900 mb-2 text-xl font-semibold;
 }
+
+label {
+  @apply text-blue-900 font-medium;
+}
+
+.btn-primary {
+  @apply bg-blue-900 text-white px-4 py-1 rounded-md;
+}

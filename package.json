@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@auth/mongodb-adapter": "^2.0.12",
+    "axios": "^1.6.5",
     "env": "^0.0.2",
     "mongodb": "^6.3.0",
     "mongoose": "^8.0.3",
