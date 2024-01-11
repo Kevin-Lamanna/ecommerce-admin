@@ -1,18 +1,26 @@
 import Layout from "@/components/layout";
 import { useState } from "react";
 import axios from "axios";
+import { redirect } from "next/dist/server/api-utils";
+import { useRouter } from "next/router";
 
 export default function NewProduct() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
+    const [goToProducts, setGoToProducts] = useState(false);
+    const router = useRouter();
     // This async function sends new product data to the endpoint /products
     // Most functions dealing with HTTP requests/responses are async
     async function createProduct(ev) {
         ev.preventDefault();
         const data = { title, description, price };
         // we use axios to (HTTP) Post the data to the endpoint 
-        await axios.post('/api/products', data)
+        await axios.post('/api/products', data);
+        setGoToProducts(true);
+    }
+    if (goToProducts) {
+        router.push('/products');
     }
     return (
         <Layout>

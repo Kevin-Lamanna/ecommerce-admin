@@ -1,6 +1,5 @@
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/product";
-import mongoose, { mongo } from "mongoose";
 
 export default async function handle(req, res) {
     // res.json(req.method);
