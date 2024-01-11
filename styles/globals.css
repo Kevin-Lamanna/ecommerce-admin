@@ -4,11 +4,12 @@
 
 input, textarea {
   @apply border-2 border-gray-300 rounded-md px-1 w-full;
-  @apply mb-2;
+  @apply mb-2 outline-none;
+
 }
 
 input:focus, textarea:focus {
-  @apply border-blue-900 !important;
+  @apply border-blue-900;
 }
 
 h1 {

@@ -3,10 +3,11 @@ import Nav from "@/components/nav";
 import { useSession, signIn, signOut } from "next-auth/react"
 
 export default function Home() {
+  // Using the : is aliasing
   const { data: session } = useSession();
   // Equivalent to:
   // const session = useSession().data
-  // const {status} = useSession();
+  // const { status } = useSession();
   // Equivalent to:
   // const status = useSession().status;
   console.log({ session });
