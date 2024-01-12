@@ -6,6 +6,11 @@ export default async function handle(req, res) {
     const { method } = req;
     // mongoose.connect(clientPromise.url);
     await mongooseConnect();
+
+    if (method === 'GET') {
+        res.json(await Product.find());
+    }
+
     if (method === 'POST') {
         // Grab the following values from the payload:
         const { title, description, price } = req.body;
