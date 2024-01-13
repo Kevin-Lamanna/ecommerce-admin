@@ -22,16 +22,14 @@ export default function ProductForm({
         const data = { title, description, price };
         if (_id) {
             //update
-
             await axios.put('/api/products', { ...data, _id });
         }
         else {
             //create
             // we use axios to (HTTP) Post the data to the endpoint 
             await axios.post('/api/products', data);
-            setGoToProducts(true);
         }
-
+        setGoToProducts(true);
     }
     if (goToProducts) {
         router.push('/products');
