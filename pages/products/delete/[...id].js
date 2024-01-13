@@ -28,7 +28,11 @@ export default function DeleteProductPage() {
                 "{productInfo?.title}"?
             </h1>
             <div className="flex gap-2 justify-center">
-                <button className="btn-red" onClick={DeleteProductPage}>Yes</button>
+                <button
+                    className="btn-red"
+                    onClick={deleteProduct}>
+                    Yes
+                </button>
                 <button
                     className="btn-default"
                     onClick={goBack}>
