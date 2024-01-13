@@ -23,4 +23,9 @@ export default async function handle(req, res) {
         })
         res.json(productDoc);
     }
+
+    if (method === 'PUT') {
+        const { title, description, price, _id } = req.body;
+
+    }
 }

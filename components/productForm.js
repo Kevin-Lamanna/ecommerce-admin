@@ -4,6 +4,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 
 export default function ProductForm({
+    _id,
     title: existingTitle,
     description: existingDescription,
     price: existingPrice,
@@ -13,20 +14,30 @@ export default function ProductForm({
     const [price, setPrice] = useState(existingPrice || '');
     const [goToProducts, setGoToProducts] = useState(false);
     const router = useRouter();
+    // console.log({ _id });
     // This async function sends new product data to the endpoint /products
     // Most functions dealing with HTTP requests/responses are async
-    async function createProduct(ev) {
+    async function saveProduct(ev) {
         ev.preventDefault();
         const data = { title, description, price };
-        // we use axios to (HTTP) Post the data to the endpoint 
-        await axios.post('/api/products', data);
-        setGoToProducts(true);
+        if (_id) {
+            //update
+
+            await axios.put('/api/products', { ...data, _id });
+        }
+        else {
+            //create
+            // we use axios to (HTTP) Post the data to the endpoint 
+            await axios.post('/api/products', data);
+            setGoToProducts(true);
+        }
+
     }
     if (goToProducts) {
         router.push('/products');
     }
     return (
-        <form onSubmit={createProduct}>
+        <form onSubmit={saveProduct}>
             <label>Product Name</label>
             <input
                 type="text"

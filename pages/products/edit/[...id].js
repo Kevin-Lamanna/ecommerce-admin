@@ -20,7 +20,12 @@ export default function EditProductPage() {
     return (
         <Layout>
             <h1>Edit Product</h1>
-            <ProductForm {...productInfo} />
+            {/* We do this to make sure that the form
+            only loads after the product informaton has loaded
+            otherwise, we might get an empty form */}
+            {productInfo && (
+                <ProductForm {...productInfo} />
+            )}
         </Layout>
     );
 };
