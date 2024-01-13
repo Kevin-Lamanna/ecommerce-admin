@@ -11,7 +11,7 @@ export default function DeleteProductPage() {
         if (!id) {
             return;
         }
-        axios.get('api/products?id=' + id).then(response => {
+        axios.get('/api/products?id=' + id).then(response => {
             setProductInfo(response.data);
         });
     }, [id]);
@@ -21,7 +21,7 @@ export default function DeleteProductPage() {
     return (
         <Layout>
             <h1>Do you really want to delete
-                &nbsp;"{productInfo?.title}"?
+                "{productInfo?.title}"?
             </h1>
             <button>Yes</button>
             <button onClick={goBack}>No</button>
