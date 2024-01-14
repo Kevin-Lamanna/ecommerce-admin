@@ -1,4 +1,7 @@
 import multiparty from 'multiparty';
+import { S3Client } from '@aws-sdk/client-s3';
+import fs from 'fs';
+import mime from 'mime-types';
 
 // We install multiparty to deal with the form data
 // This function handles the upload request and response
