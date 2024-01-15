@@ -17,11 +17,31 @@ export default async function handle(req, res) {
         });
     });
     console.log('length:', files.file.length);
-    clientPromise.send(new PutObjectCommand({
-        Bucket: 'Kevin-next-ecommerce'
-    }));
+    const client = new S3Client({
+        region: 'us-east-1',
+        credentials: {
+            accessKeyId: process.env.S3_ACCESS_KEY,
+            secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+        }
+    });
+    const links = [];
+    // For loop to generate file names
+    for (const file of files.file) {
+        const ext = file.originalFilename.split('.').pop();
+        const newFileName = Date.now() + '.' + ext
+        console.log({ ext, file });
+        await client.send(new PutObjectCommand({
+            Bucket: bucketName,
+            Key: newFileName,
+            Body: fs.readFileSync(file.path),
+            ACL: 'public-read',
+            ContentType: mime.lookup(file.path),
+        }));
+        const link = `https://${bucketName}.s3.amazonaws.com/${newFileName}`;
+        links.push(link);
+    }
 
-    return res.json('ok');
+    return res.json({ links });
 }
 
 // Tells next.js to not parse our request as json
