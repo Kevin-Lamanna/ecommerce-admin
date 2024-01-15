@@ -1,7 +1,9 @@
 import multiparty from 'multiparty';
-import { S3Client } from '@aws-sdk/client-s3';
+import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import fs from 'fs';
 import mime from 'mime-types';
+
+const bucketName = 'kevin-next-ecommerce';
 
 // We install multiparty to deal with the form data
 // This function handles the upload request and response
@@ -15,6 +17,9 @@ export default async function handle(req, res) {
         });
     });
     console.log('length:', files.file.length);
+    clientPromise.send(new PutObjectCommand({
+        Bucket: 'Kevin-next-ecommerce'
+    }));
 
     return res.json('ok');
 }
