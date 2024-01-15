@@ -13,6 +13,7 @@
     "@aws-sdk/client-s3": "^3.490.0",
     "axios": "^1.6.5",
     "env": "^0.0.2",
+    "mime": "^4.0.1",
     "mongodb": "^6.3.0",
     "mongoose": "^8.0.3",
     "multiparty": "^4.2.3",
@@ -20,7 +21,8 @@
     "next-auth": "^4.24.5",
     "nodemailer": "^6.9.8",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-spinners": "^0.13.8"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.16",
