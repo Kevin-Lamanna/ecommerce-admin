@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* All Images */
 img {
   max-height: 100%
 }
@@ -24,9 +25,8 @@ label {
   @apply text-blue-900 font-medium;
 }
 
-.btn-primary {
-  @apply bg-blue-900 text-white px-4 py-1 rounded-md;
-}
+
+/* Table Styling */
 
 /* Targets the full table */
 table.basic {
@@ -50,6 +50,8 @@ table.basic a {
   text-sm py-1 px-2 rounded-md inline-flex gap-1 mr-1;
 }
 
+
+/* Buttons */
 button {
   @apply font-medium;
 }
@@ -64,4 +66,8 @@ button {
 
 .btn-default {
   @apply bg-gray-600 text-white;
+}
+
+.btn-primary {
+  @apply bg-blue-900 text-white px-4 py-1 rounded-md;
 }
