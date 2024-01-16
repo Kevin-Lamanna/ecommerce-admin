@@ -3,7 +3,7 @@ import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import fs from 'fs';
 import mime from 'mime-types';
 
-const bucketName = 'kevin-next-ecommerce';
+const bucketName = 'kevin-nextjs-ecommerce';
 
 // We install multiparty to deal with the form data
 // This function handles the upload request and response
