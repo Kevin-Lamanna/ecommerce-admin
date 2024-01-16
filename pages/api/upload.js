@@ -27,9 +27,12 @@ export default async function handle(req, res) {
     const links = [];
     // For loop to generate file names
     for (const file of files.file) {
+        // Split the string and extract the extension from the end
         const ext = file.originalFilename.split('.').pop();
+        // Append the Date() with the extension to create a unique filename
         const newFileName = Date.now() + '.' + ext
         console.log({ ext, file });
+        // Send the information to the bucket
         await client.send(new PutObjectCommand({
             Bucket: bucketName,
             Key: newFileName,
@@ -40,7 +43,7 @@ export default async function handle(req, res) {
         const link = `https://${bucketName}.s3.amazonaws.com/${newFileName}`;
         links.push(link);
     }
-
+    // Return a response with the links to the bucket(s)
     return res.json({ links });
 }
 
