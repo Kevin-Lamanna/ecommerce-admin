@@ -3,6 +3,7 @@ import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import fs from 'fs';
 import mime from 'mime-types';
 
+// Bucket name on AWS
 const bucketName = 'kevin-nextjs-ecommerce';
 
 // We install multiparty to deal with the form data
@@ -25,6 +26,7 @@ export default async function handle(req, res) {
             secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
         }
     });
+    // Array of links to the files in the bucket
     const links = [];
     // For loop to generate file names
     for (const file of files.file) {
@@ -37,14 +39,19 @@ export default async function handle(req, res) {
         await client.send(new PutObjectCommand({
             Bucket: bucketName,
             Key: newFileName,
+            // Read the file synchronously
             Body: fs.readFileSync(file.path),
+            // File is publicly available
             ACL: 'public-read',
+            // We don't know whether the file is a jpeg or a png
+            // We can check the filetype with mime types
             ContentType: mime.lookup(file.path),
         }));
+        // Link to the bucket with the new file
         const link = `https://${bucketName}.s3.amazonaws.com/${newFileName}`;
         links.push(link);
     }
-    // Return a response with the links to the bucket(s)
+    // Return a response with the links to files in the bucket
     return res.json({ links });
 }
 
