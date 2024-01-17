@@ -82,7 +82,8 @@ export default function ProductForm({
                     setList={updateImagesOrder}>
                     {/* double !! converts number to boolean */}
                     {!!images?.length && images.map(link => (
-                        <div key={link} class="h-24">
+                        // Later, added functionality to zoom in on images
+                        <div key={link} className="h-24">
                             <img src={link} alt="" className="rounded-lg" />
                         </div>
                     ))}
