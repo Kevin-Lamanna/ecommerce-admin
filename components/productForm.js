@@ -58,6 +58,11 @@ export default function ProductForm({
             setIsUploading(false);
         }
     }
+    function updateImagesOrder(images) {
+        // console.log(arguments);
+        // console.log(images);
+        setImages(images);
+    }
     return (
         <form onSubmit={saveProduct}>
             <label>Product Name</label>
@@ -70,12 +75,18 @@ export default function ProductForm({
                 Photos
             </label>
             <div className="mb-2 flex flex-wrap gap-2">
-                {/* double !! converts number to boolean */}
-                {!!images?.length && images.map(link => (
-                    <div key={link} class="h-24">
-                        <img src={link} alt="" className="rounded-lg" />
-                    </div>
-                ))}
+                {/* React Sortable is used to Sort our images */}
+                <ReactSortable
+                    list={images}
+                    className="flex flex-wrap gap-2"
+                    setList={updateImagesOrder}>
+                    {/* double !! converts number to boolean */}
+                    {!!images?.length && images.map(link => (
+                        <div key={link} class="h-24">
+                            <img src={link} alt="" className="rounded-lg" />
+                        </div>
+                    ))}
+                </ReactSortable>
                 {isUploading && (
                     <div className="h-24 p1 flex items-center">
                         {/* Uploading... */}
