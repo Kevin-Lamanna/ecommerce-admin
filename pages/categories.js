@@ -23,6 +23,18 @@ export default function Categories() {
                     value={name} />
                 <button type="submit" className="btn-primary py-1">Save</button>
             </form>
+            <table className="basic mt-4">
+                <thead>
+                    <tr>
+                        <td>Category Name</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
         </Layout>
     );
 }
