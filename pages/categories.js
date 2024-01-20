@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 export default function Categories() {
     // Every Input needs a useState Hook to update the value
+    const [editedCategory, setEditedCategory] = useState(null);
     const [name, setName] = useState('');
     const [categories, setCategories] = useState([]);
     const [parentCategory, setParentCategory] = useState('');
@@ -27,13 +28,13 @@ export default function Categories() {
     }
     // edits the category
     function editCategory(category) {
-
+        setEditedCategory(category);
     }
     return (
         // Category Page Layout
         <Layout>
             <h1>Categories</h1>
-            <label>New category name</label>
+            <label>{editedCategory ? "Edit category" : "Create new category"}</label>
             <form onSubmit={saveCategory} className="flex gap-2">
                 <input
                     className="mb-0"
