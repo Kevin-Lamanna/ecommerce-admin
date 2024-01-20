@@ -12,21 +12,25 @@ export default function Categories() {
     useEffect(() => {
         fetchCategories();
     }, []);
+    // Fetches the category from the database
     function fetchCategories() {
         axios.get('/api/categories').then(result => {
             setCategories(result.data);
         });
     }
+    // Saves the category
     async function saveCategory(ev) {
         ev.preventDefault();
         await axios.post('/api/categories', { name, parentCategory });
         setName('');
         fetchCategories();
     }
+    // edits the category
     function editCategory(category) {
 
     }
     return (
+        // Category Page Layout
         <Layout>
             <h1>Categories</h1>
             <label>New category name</label>
