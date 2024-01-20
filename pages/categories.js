@@ -6,6 +6,7 @@ export default function Categories() {
     // Every Input needs a useState Hook to update the value
     const [name, setName] = useState('');
     const [categories, setCategories] = useState([]);
+    const [parentCategory, setParentCategory] = useState('');
     // Allows use to grab the data from the database
     // and then set the categories' (list) values to the grabbed data
     useEffect(() => {
@@ -18,7 +19,7 @@ export default function Categories() {
     }
     async function saveCategory(ev) {
         ev.preventDefault();
-        await axios.post('/api/categories', { name });
+        await axios.post('/api/categories', { name, parentCategory });
         setName('');
         fetchCategories();
     }
@@ -33,8 +34,10 @@ export default function Categories() {
                     placeholder={'Category name'}
                     onChange={ev => setName(ev.target.value)}
                     value={name} />
-                <select className="mb-0">
-                    <option value="0">No parent category</option>
+                <select className="mb-0"
+                    onChange={ev => setParentCategory(ev.target.value)}
+                    value={parentCategory}>
+                    <option value="">No parent category</option>
                     {categories.length > 0 && categories.map(category =>
                     (
                         <option value={category._id}>{category.name}</option>
