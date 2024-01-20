@@ -9,14 +9,18 @@ export default function Categories() {
     // Allows use to grab the data from the database
     // and then set the categories' (list) values to the grabbed data
     useEffect(() => {
+        fetchCategories();
+    }, []);
+    function fetchCategories() {
         axios.get('/api/categories').then(result => {
             setCategories(result.data);
         });
-    }, []);
+    }
     async function saveCategory(ev) {
         ev.preventDefault();
         await axios.post('/api/categories', { name });
         setName('');
+        fetchCategories();
     }
     return (
         <Layout>
