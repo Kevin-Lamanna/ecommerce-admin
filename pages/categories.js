@@ -23,7 +23,21 @@ export default function Categories() {
     // Saves the category
     async function saveCategory(ev) {
         ev.preventDefault();
-        await axios.post('/api/categories', { name, parentCategory });
+        const data = { name, parentCategory }
+        if (editedCategory) {
+            data._id = editedCategory._id;
+            // make a PUT request
+            await axios.put('/api/categories', data);
+            // Set the input back to null or ''
+            setEditedCategory(null);
+        } else {
+            // await axios.post('/api/categories', {
+            //     name, parentCategory
+            // });
+            // We simplified our code with the data variable
+            await axios.post('/api/categories', data);
+        }
+
         setName('');
         fetchCategories();
     }
