@@ -6,8 +6,9 @@ export default function Categories() {
     // Every Input needs a useState Hook to update the value
     const [editedCategory, setEditedCategory] = useState(null);
     const [name, setName] = useState('');
-    const [categories, setCategories] = useState([]);
     const [parentCategory, setParentCategory] = useState('');
+    const [categories, setCategories] = useState([]);
+    const [properties, setProperties] = useState([]);
     // Allows use to grab the data from the database
     // and then set the categories' (list) values to the grabbed data
     useEffect(() => {
@@ -29,12 +30,18 @@ export default function Categories() {
     // edits the category
     function editCategory(category) {
         setEditedCategory(category);
+        setName(category.name);
+        setParentCategory(category.parent?._id);
     }
     return (
         // Category Page Layout
         <Layout>
             <h1>Categories</h1>
-            <label>{editedCategory ? "Edit category" : "Create new category"}</label>
+            <label>
+                {editedCategory
+                    ? `Edit category ${editedCategory.name}`
+                    : "Create new category"}
+            </label>
             <form onSubmit={saveCategory} className="flex gap-2">
                 <input
                     className="mb-0"
@@ -48,10 +55,12 @@ export default function Categories() {
                     <option value="">No parent category</option>
                     {categories.length > 0 && categories.map(category =>
                     (
-                        <option value={category._id}>{category.name}</option>
+                        <option key={category._id} value={category._id}>{category.name}</option>
                     ))}
                 </select>
-                <button type="submit" className="btn-primary py-1">Save</button>
+                <button type="submit"
+                    className="btn-primary py-1">Save
+                </button>
             </form>
             <table className="basic mt-4">
                 <thead>
@@ -64,7 +73,7 @@ export default function Categories() {
                 <tbody>
                     {categories.length > 0 && categories.map(category =>
                     (
-                        <tr>
+                        <tr key={category._id}>
                             <td>{category.name}</td>
                             <td>{category?.parent?.name}</td>
                             <td>
