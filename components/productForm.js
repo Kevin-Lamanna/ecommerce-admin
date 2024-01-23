@@ -27,8 +27,11 @@ export default function ProductForm({
     const [goToProducts, setGoToProducts] = useState(false);
     const [categories, setCategories] = useState([]);
     const router = useRouter();
+    // We use useEffect to fetch an array of all of our categories 
+    // from the /api/categories endpoint
     useEffect(() => {
         axios.get('/api/categories').then(result => {
+            // We set our categories array to the fetched data (array)
             setCategories(result.data);
         })
     }, []);
@@ -106,9 +109,10 @@ export default function ProductForm({
             />
 
             <label>Category</label>
-            <select value={category}
-                onChange={ev => setCategory(ev.target.value)}>
+            {/* Sets the value to the selected target value from the list of options */}
+            <select value={category} onChange={ev => setCategory(ev.target.value)}>
                 <option value="">Uncategorized</option>
+                {/* Populate the select input with options from our categories array*/}
                 {categories.length > 0 && categories.map(c => (
                     <option key={c._id} value={c._id}>{c.name}</option>
                 ))}
