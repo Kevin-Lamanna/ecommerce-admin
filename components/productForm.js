@@ -1,4 +1,3 @@
-import Layout from "@/components/layout";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -23,8 +22,8 @@ export default function ProductForm({
     const [productProperties, setProductProperties] = useState(assignedProperties || {});
     const [price, setPrice] = useState(existingPrice || '');
     const [images, setImages] = useState(existingImages || []);
-    const [isUploading, setIsUploading] = useState(false);
     const [goToProducts, setGoToProducts] = useState(false);
+    const [isUploading, setIsUploading] = useState(false);
     const [categories, setCategories] = useState([]);
     const router = useRouter();
     // We use useEffect to fetch an array of all of our categories 
@@ -40,7 +39,10 @@ export default function ProductForm({
     // Most functions dealing with HTTP requests/responses are async
     async function saveProduct(ev) {
         ev.preventDefault();
-        const data = { title, description, price, images };
+        const data = {
+            title, description, price, images, category,
+            properties: productProperties
+        };
         if (_id) {
             //update
             await axios.put('/api/products', { ...data, _id });
@@ -87,16 +89,16 @@ export default function ProductForm({
         });
     }
 
-    const propertiesToFill = [];
-    if (categories.length > 0 && category) {
-        let catInfo = categories.find(({ _id }) => _id === category);
-        propertiesToFill.push(...catInfo.properties);
-        while (catInfo?.parent?._id) {
-            const parentCat = categories.find(({ _id }) => _id === catInfo?.parent?._id);
-            propertiesToFill.push(...parentCat.properties);
-            catInfo = parentCat;
-        }
-    }
+    // const propertiesToFill = [];
+    // if (categories.length > 0 && category) {
+    //     let catInfo = categories.find(({ _id }) => _id === category);
+    //     propertiesToFill.push(...catInfo.properties);
+    //     while (catInfo?.parent?._id) {
+    //         const parentCat = categories.find(({ _id }) => _id === catInfo?.parent?._id);
+    //         propertiesToFill.push(...parentCat.properties);
+    //         catInfo = parentCat;
+    //     }
+    // }
 
     return (
         <form onSubmit={saveProduct}>
@@ -110,14 +112,15 @@ export default function ProductForm({
 
             <label>Category</label>
             {/* Sets the value to the selected target value from the list of options */}
-            <select value={category} onChange={ev => setCategory(ev.target.value)}>
+            <select value={category}
+                onChange={ev => setCategory(ev.target.value)}>
                 <option value="">Uncategorized</option>
                 {/* Populate the select input with options from our categories array*/}
                 {categories.length > 0 && categories.map(c => (
                     <option key={c._id} value={c._id}>{c.name}</option>
                 ))}
             </select>
-            {propertiesToFill.length > 0 && propertiesToFill.map(p => (
+            {/* {propertiesToFill.length > 0 && propertiesToFill.map(p => (
                 <div key={p.name} className="">
                     <label>{p.name[0].toUpperCase() + p.name.substring(1)}</label>
                     <div>
@@ -132,7 +135,7 @@ export default function ProductForm({
                         </select>
                     </div>
                 </div>
-            ))}
+            ))} */}
             <label>
                 Photos
             </label>
