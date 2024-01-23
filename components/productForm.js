@@ -6,6 +6,7 @@ import Spinner from "./spinner";
 import { ReactSortable } from "react-sortablejs";
 
 export default function ProductForm({
+    // Function arguments in the form of an array
     _id,
     title: existingTitle,
     description: existingDescription,
@@ -13,7 +14,9 @@ export default function ProductForm({
     images: existingImages,
     category: assignedCategory,
     properties: assignedProperties,
+    // Function Body
 }) {
+    // Local State Variables
     const [title, setTitle] = useState(existingTitle || '');
     const [description, setDescription] = useState(existingDescription || '');
     const [category, setCategory] = useState(assignedCategory || '');
