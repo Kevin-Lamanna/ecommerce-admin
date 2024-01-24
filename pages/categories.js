@@ -63,6 +63,7 @@ function Categories({ swal }) {
             }))
         );
     }
+    // Deletes the Category
     function deleteCategory(category) {
         swal.fire({
             title: 'Are you sure?',
@@ -80,25 +81,35 @@ function Categories({ swal }) {
             }
         });
     }
+    // Adds a property
     function addProperty() {
         setProperties(prev => {
             return [...prev, { name: '', values: '' }];
         });
     }
+    // Updates the Property's name
     function handlePropertyNameChange(index, property, newName) {
         setProperties(prev => {
+            // Make a copy of the prev Array
             const properties = [...prev];
+            // Change the name
             properties[index].name = newName;
+            // Return the Array
             return properties;
         });
     }
+    // Updates the Property's value
     function handlePropertyValuesChange(index, property, newValues) {
         setProperties(prev => {
+            // Make a copy of the prev Array
             const properties = [...prev];
+            // Change the name
             properties[index].values = newValues;
+            // Return the Array
             return properties;
         });
     }
+    // Removes a Property
     function removeProperty(indexToRemove) {
         setProperties(prev => {
             return [...prev].filter((p, pIndex) => {
@@ -138,6 +149,7 @@ function Categories({ swal }) {
                         className="btn-default text-sm mb-2">
                         Add new property
                     </button>
+                    {/* Lists All of our Properties on the Categories Page */}
                     {properties.length > 0 && properties.map((property, index) => (
                         <div key={property.name} className="flex gap-1 mb-2">
                             <input type="text"
@@ -162,8 +174,10 @@ function Categories({ swal }) {
                             </button>
                         </div>
                     ))}
+
                 </div>
                 <div className="flex gap-1">
+                    {/* Cancel Button */}
                     {editedCategory && (
                         <button
                             type="button"
@@ -175,6 +189,7 @@ function Categories({ swal }) {
                             }}
                             className="btn-default">Cancel</button>
                     )}
+                    {/* Save Button */}
                     <button type="submit"
                         className="btn-primary py-1">
                         Save
