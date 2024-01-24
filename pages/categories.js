@@ -131,7 +131,7 @@ function Categories({ swal }) {
                     </select>
                 </div>
                 <div className="mb-2">
-                    <label className="block">Properties</label>
+                    <label className="block mb-2">Properties</label>
                     <button
                         onClick={addProperty}
                         type="button"
