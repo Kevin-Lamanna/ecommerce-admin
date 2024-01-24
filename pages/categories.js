@@ -29,6 +29,10 @@ function Categories({ swal }) {
             parentCategory,
             properties: properties.map(p => ({
                 name: p.name,
+                // Converts the values to an array
+                // The split() method splits a string into an array of substrings.
+                // .split() does not mutate the original String
+                // The split() method returns the new array.
                 values: p.values.split(','),
             })),
         };
@@ -59,6 +63,9 @@ function Categories({ swal }) {
         setProperties(
             category.properties.map(({ name, values }) => ({
                 name,
+                // Converts the values to a String
+                // .join(',') returns an array as a string
+                // .join() does not mutate the original Array
                 values: values.join(',')
             }))
         );
