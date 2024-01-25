@@ -120,7 +120,8 @@ export default function ProductForm({
                     <option key={c._id} value={c._id}>{c.name}</option>
                 ))}
             </select>
-            {/* {propertiesToFill.length > 0 && propertiesToFill.map(p => (
+
+            {propertiesToFill.length > 0 && propertiesToFill.map(p => (
                 <div key={p.name} className="">
                     <label>{p.name[0].toUpperCase() + p.name.substring(1)}</label>
                     <div>
@@ -135,7 +136,8 @@ export default function ProductForm({
                         </select>
                     </div>
                 </div>
-            ))} */}
+            ))}
+
             <label>
                 Photos
             </label>
