@@ -89,6 +89,9 @@ export default function ProductForm({
         });
     }
 
+    // Fetches the Properties from the parent category 
+    // and current category for the product based on
+    // the id of category and the id of its parent
     const propertiesToFill = [];
     if (categories.length > 0 && category) {
         let catInfo = categories.find(({ _id }) => _id === category);
@@ -121,6 +124,7 @@ export default function ProductForm({
                 ))}
             </select>
 
+            {/* Displays Property Labels and Values Fetched from the Database*/}
             {propertiesToFill.length > 0 && propertiesToFill.map(p => (
                 <div key={p.name} className="">
                     <label>{p.name[0].toUpperCase() + p.name.substring(1)}</label>
