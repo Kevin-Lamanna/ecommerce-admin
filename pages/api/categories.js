@@ -6,6 +6,7 @@ export default async function handle(req, res) {
     const { method } = req;
     // mongoose.connect(clientPromise.url);
     await mongooseConnect();
+    const session = await getServerSession();
 
     if (method === 'GET') {
         res.json(await Category.find().populate('parent'));
