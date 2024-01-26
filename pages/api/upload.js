@@ -12,6 +12,8 @@ const bucketName = 'kevin-nextjs-ecommerce';
 // We install multiparty to deal with the form data
 // This function handles the upload request and response
 export default async function handle(req, res) {
+    await mongooseConnect();
+    await isAdminRequest(req, res);
 
     const form = new multiparty.Form();
     // grab the fields and files from the promise
