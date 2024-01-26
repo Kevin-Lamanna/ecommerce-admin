@@ -1,5 +1,7 @@
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/product";
+import { getServerSession } from "next-auth";
+import { authOptions, isAdminRequest } from "@/pages/api/auth/[...nextauth]";
 
 // Handles HTTP requests associated with the MongoDB Database
 export default async function handle(req, res) {
@@ -7,6 +9,7 @@ export default async function handle(req, res) {
     const { method } = req;
     // mongoose.connect(clientPromise.url);
     await mongooseConnect();
+    await isAdminRequest(req, res);
 
     // Get from Database
     if (method === 'GET') {
