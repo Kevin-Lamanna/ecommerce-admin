@@ -10,6 +10,8 @@ module.exports = {
       // We can add new colors here
       colors: {
         primary: '#5542F6',
+        highlight: '#eae8fb',
+        bgGray: '#fbfafd',
       }
     },
   },
