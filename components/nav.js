@@ -25,7 +25,9 @@ export default function Nav({ show }) {
         // <aside className="text-white p-4 pr-0">
         // <aside className="text-gray-500 p-4 bg-bgGray">
         <aside className={(show ? 'left-0' : '-left-full') + " top-0 text-gray-500 p-4 fixed w-full bg-bgGray h-full md:static md:w-auto transition-all"}>
-            <Logo />
+            <div className="mb-4 mr-4">
+                <Logo />
+            </div>
             <nav className="flex flex-col gap-2 font-medium">
                 <Link href={"/"} className={pathname === '/' ? activeLink : inactiveLink}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={pathname === '/' ? activeIcon : inactiveIcon}>
