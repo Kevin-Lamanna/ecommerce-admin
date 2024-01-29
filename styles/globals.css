@@ -45,10 +45,10 @@ table.basic tr td {
   @apply font-medium;
 }
 
-table.basic a {
-  @apply bg-blue-900 text-white 
-  text-sm py-1 px-2 rounded-md inline-flex gap-1 mr-1;
-}
+/* table.basic a {
+  @apply text-white px-3 py-1 rounded-md inline-flex 
+  mx-1 items-center gap-1 bg-gray-700;
+} */
 
 
 /* Buttons */
@@ -70,4 +70,15 @@ button {
 
 .btn-primary {
   @apply bg-primary text-white px-4 py-1 rounded-md;
+}
+
+.edit-btn {
+  @apply bg-gray-800 text-white;
+  @apply px-3 py-1 rounded-md inline-flex 
+  mx-1 items-center gap-1 text-sm;
+}
+.delete-btn {
+  @apply bg-red-800 text-white;
+  @apply px-3 py-1 rounded-md inline-flex 
+  mx-1 items-center gap-1 text-sm;
 }
