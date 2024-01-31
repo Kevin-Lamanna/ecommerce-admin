@@ -151,7 +151,7 @@ export default function ProductForm({
                     {/* double !! converts number to boolean */}
                     {!!images?.length && images.map(link => (
                         // Later, added functionality to zoom in on images
-                        <div key={link} className="h-24">
+                        <div key={link} className="h-24 p-1 shadow-sm">
                             <img src={link} alt="" className="rounded-lg" />
                         </div>
                     ))}
@@ -162,13 +162,13 @@ export default function ProductForm({
                         <Spinner />
                     </div>
                 )}
-                <label className="w-24 h-24 border cursor-pointer text-center flex flex-col items-center justify-center text-sm text-gray-600 rounded-md bg-gray-200">
+                <label className="w-24 h-20 border border-gray-300 cursor-pointer text-center flex flex-col items-center justify-center text-sm text-primary rounded-md bg-white mt-2 ml-3 shadow-md">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
                     </svg>
 
                     <div>
-                        Upload
+                        Add Image
                     </div>
                     <input type="file" onChange={uploadImages} className="hidden" />
                 </label>
