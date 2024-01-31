@@ -176,7 +176,7 @@ function Categories({ swal }) {
                             <button
                                 onClick={() => removeProperty(index)}
                                 type="button"
-                                className="btn-red">
+                                className="edit-btn">
                                 Remove
                             </button>
                         </div>
