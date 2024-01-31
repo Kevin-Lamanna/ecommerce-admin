@@ -75,10 +75,10 @@ button {
 .edit-btn {
   @apply bg-gray-700 text-white shadow-md;
   @apply px-3 py-1 rounded-md inline-flex 
-  mx-1 items-center gap-1 text-sm;
+  mx-2 items-center gap-1 text-sm;
 }
 .delete-btn {
-  @apply bg-red-300 text-red-800 shadow-md;
+  @apply bg-red-300 text-red-700 shadow-md border border-red-500;
   @apply px-3 py-1 rounded-md inline-flex 
   mx-1 items-center gap-1 text-sm;
 }
