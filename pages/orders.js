@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function OrdersPage() {
+    // States and Hooks
     const [orders, setOrders] = useState([]);
     useEffect(() => {
         axios.get('/api/orders').then(response => {
