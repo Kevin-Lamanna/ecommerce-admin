@@ -6,7 +6,9 @@ export default function OrdersPage() {
     // States and Hooks
     const [orders, setOrders] = useState([]);
     useEffect(() => {
+        // Grab the orders from the database via /api/orders.js
         axios.get('/api/orders').then(response => {
+            // Each order state is set to the order response data
             setOrders(response.data);
         });
     }, []);
