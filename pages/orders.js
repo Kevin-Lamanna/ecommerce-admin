@@ -17,6 +17,7 @@ export default function OrdersPage() {
             <h1>Orders</h1>
             {/* Table of Orders */}
             <table className="basic">
+                {/* Column Headings */}
                 <thead>
                     <tr>
                         <th>Date</th>
