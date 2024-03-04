@@ -39,14 +39,18 @@ export default function OrdersPage() {
                             </td>
                             {/* Recipient (Object) */}
                             <td>
+                                {/* Order Name */}
                                 {order.name} {order.email}<br />
+                                {/* Order City */}
                                 {order.city} {order.postalCode} {order.country}<br />
+                                {/* Order Street Address */}
                                 {order.streetAddress}
                             </td>
                             {/* Product (Object) */}
                             <td>
                                 {order.line_items.map(l => (
                                     <>
+                                        {/* Product Price and Quantity */}
                                         {l.price_data?.product_data.name} x
                                         {l.quantity}<br />
                                     </>
