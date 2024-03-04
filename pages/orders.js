@@ -30,16 +30,20 @@ export default function OrdersPage() {
                 <tbody>
                     {orders.length > 0 && orders.map(order => (
                         <tr key={order._id}>
+                            {/* Date */}
                             <td>{(new Date(order.createdAt)).toLocaleString()}
                             </td>
+                            {/* Paid */}
                             <td className={order.paid ? 'text-green-600' : 'text-red-600'}>
                                 {order.paid ? 'YES' : 'NO'}
                             </td>
+                            {/* Recipient (Object) */}
                             <td>
                                 {order.name} {order.email}<br />
                                 {order.city} {order.postalCode} {order.country}<br />
                                 {order.streetAddress}
                             </td>
+                            {/* Product (Object) */}
                             <td>
                                 {order.line_items.map(l => (
                                     <>
