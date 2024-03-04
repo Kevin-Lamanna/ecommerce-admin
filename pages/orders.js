@@ -26,6 +26,7 @@ export default function OrdersPage() {
                         <th>Products</th>
                     </tr>
                 </thead>
+                {/* Table Body Rows */}
                 <tbody>
                     {orders.length > 0 && orders.map(order => (
                         <tr key={order._id}>
