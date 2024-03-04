@@ -13,6 +13,7 @@ export default function OrdersPage() {
     return (
         <Layout>
             <h1>Orders</h1>
+            {/* Table of Orders */}
             <table className="basic">
                 <thead>
                     <tr>
